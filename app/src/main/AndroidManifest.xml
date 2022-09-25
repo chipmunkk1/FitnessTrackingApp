@@ -14,6 +14,12 @@
         android:theme="@style/Theme.RohiRealFinalProject"
         tools:targetApi="31">
         <activity
+            android:name=".signIn"
+            android:exported="false" />
+        <activity
+            android:name=".splashscreen"
+            android:exported="false" />
+        <activity
             android:name=".MainActivity"
             android:exported="true">
             <intent-filter>

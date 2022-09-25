@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "568093777265",
+    "project_id": "rohirealfinalproject",
+    "storage_bucket": "rohirealfinalproject.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:568093777265:android:239ead31b04a1059342ad0",
+        "android_client_info": {
+          "package_name": "rao.rohi.rohirealfinalproject"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "568093777265-bcn7g1j8j07lma7fd53i4r9bvshv945b.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA0Eia_U-uaFcnAw6dRxYCLqZSanCtniDo"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "568093777265-bcn7g1j8j07lma7fd53i4r9bvshv945b.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
