@@ -16,9 +16,12 @@
         <activity
             android:name=".signIn"
             android:exported="false" />
+
         <activity
             android:name=".splashscreen"
             android:exported="false" />
+
+
         <activity
             android:name=".MainActivity"
             android:exported="true">
