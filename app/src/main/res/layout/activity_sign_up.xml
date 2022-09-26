@@ -5,18 +5,16 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".signIn">
+    tools:context=".SignUp" >
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
         android:layout_height="wrap_content">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etEmail"
+            android:id="@+id/etEmail2"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="50dp"
-            android:layout_marginBottom="0dp"
+            android:layout_height="wrap_content"
             android:hint="Email" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -25,11 +23,21 @@
         android:layout_height="wrap_content">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etPass"
+            android:id="@+id/etPass2"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginBottom="80dp"
+            android:layout_height="wrap_content"
             android:hint="Password" />
+    </com.google.android.material.textfield.TextInputLayout>
+
+    <com.google.android.material.textfield.TextInputLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <com.google.android.material.textfield.TextInputEditText
+            android:id="@+id/etConfirmPass"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="Confirm Password" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <LinearLayout
@@ -38,18 +46,17 @@
         android:orientation="horizontal">
 
         <Button
-            android:id="@+id/btnSignIn"
+            android:id="@+id/btnCancel"
             android:layout_width="wrap_content"
             android:layout_height="60dp"
             android:layout_weight="1"
-            android:text="Sign In" />
+            android:text="Cancel" />
 
         <Button
-            android:id="@+id/btnSignUp"
+            android:id="@+id/btnSave"
             android:layout_width="wrap_content"
             android:layout_height="60dp"
             android:layout_weight="1"
-            android:text="Sign Up" />
+            android:text="Save" />
     </LinearLayout>
-
 </LinearLayout>
