@@ -5,7 +5,18 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:background="@drawable/background"
     tools:context=".SignUp" >
+
+    <TextView
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:textStyle="bold"
+        android:textColor="@color/white"
+        android:text="Sign Up"
+        android:gravity="center"
+        android:layout_margin="50dp"
+        android:textSize="35dp"/>
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
@@ -15,7 +26,13 @@
             android:id="@+id/etEmail2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:hint="Email" />
+            android:layout_marginTop="20dp"
+            android:background="#30ffffff"
+            android:drawableLeft="@drawable/ic_baseline_person_outline_24"
+            android:drawablePadding="20dp"
+            android:hint="Email"
+            android:textColor="@color/black"
+            android:padding="20dp" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -26,6 +43,12 @@
             android:id="@+id/etPass2"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:textColor="@color/black"
+            android:background="#30ffffff"
+            android:drawableLeft="@drawable/ic_baseline_info_24"
+            android:drawablePadding="20dp"
+            android:layout_marginTop="20dp"
             android:hint="Password" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -37,6 +60,13 @@
             android:id="@+id/etConfirmPass"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:padding="20dp"
+            android:textColor="@color/black"
+            android:drawableLeft="@drawable/ic_baseline_info_24"
+            android:drawablePadding="20dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="0dp"
+            android:background="#30ffffff"
             android:hint="Confirm Password" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -50,12 +80,16 @@
             android:layout_width="wrap_content"
             android:layout_height="60dp"
             android:layout_weight="1"
+            android:backgroundTint="@color/teal_200"
+            android:layout_margin="20dp"
             android:text="Cancel" />
 
         <Button
             android:id="@+id/btnSave"
             android:layout_width="wrap_content"
             android:layout_height="60dp"
+            android:backgroundTint="@color/teal_200"
+            android:layout_margin="20dp"
             android:layout_weight="1"
             android:text="Save" />
     </LinearLayout>

@@ -8,14 +8,12 @@ import android.os.Handler;
 import android.widget.ImageView;
 
 public class splashscreen extends AppCompatActivity {
-    private ImageView imageView2;
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_splashscreen);
-        imageView2=findViewById(R.id.imageView2);
         Handler h = new Handler();
         Runnable r = new Runnable() {
             @Override

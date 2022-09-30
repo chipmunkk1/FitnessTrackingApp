@@ -9,19 +9,15 @@
     tools:context=".signIn">
 
     <TextView
+        android:id="@+id/txtSignIn"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Sign In"
-        android:id="@+id/txtSignIn"
-        android:textColor="@color/white"
-        android:textSize="35dp"
         android:layout_margin="50dp"
         android:gravity="center"
-        android:textStyle="bold"/>
-
-
-
-
+        android:text="Sign In"
+        android:textColor="@color/white"
+        android:textSize="35dp"
+        android:textStyle="bold" />
 
 
     <com.google.android.material.textfield.TextInputLayout
@@ -31,19 +27,18 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etEmail"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
-            android:layout_marginTop="50dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="30dp"
+            android:layout_marginTop="20dp"
             android:layout_marginBottom="0dp"
-            android:hint="Email"
             android:background="#30ffffff"
-            android:layout_margin="10dp"
-            android:padding="20dp"
             android:drawableLeft="@drawable/ic_baseline_person_outline_24"
             android:drawablePadding="20dp"
-            android:textColor="@color/white" />
+            android:hint="Email"
+            android:padding="20dp"
+            android:textColor="@color/black" />
 
     </com.google.android.material.textfield.TextInputLayout>
-
 
 
     <com.google.android.material.textfield.TextInputLayout
@@ -53,14 +48,16 @@
         <com.google.android.material.textfield.TextInputEditText
             android:id="@+id/etPass"
             android:layout_width="match_parent"
-            android:layout_height="50dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="30dp"
             android:layout_marginBottom="80dp"
-            android:padding="20dp"
-            android:layout_margin="10dp"
             android:background="#30ffffff"
             android:drawableLeft="@drawable/ic_baseline_info_24"
             android:drawablePadding="20dp"
-            android:hint="Password" />
+            android:password="true"
+            android:hint="Password"
+            android:textColor="@color/black"
+            android:padding="20dp" />
 
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -74,8 +71,8 @@
             android:layout_width="wrap_content"
             android:layout_height="60dp"
             android:layout_weight="1"
-            android:textColor=""
             android:backgroundTint="@color/teal_200"
+            android:layout_margin="20dp"
             android:text="Login" />
 
         <Button
@@ -83,6 +80,8 @@
             android:layout_width="wrap_content"
             android:layout_height="60dp"
             android:layout_weight="1"
+            android:backgroundTint="@color/teal_200"
+            android:layout_margin="20dp"
             android:text="Sign Up" />
     </LinearLayout>
 
