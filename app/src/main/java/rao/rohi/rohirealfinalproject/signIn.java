@@ -22,10 +22,6 @@ public class signIn extends AppCompatActivity {
     private Button btnSignIn;
 
 
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
