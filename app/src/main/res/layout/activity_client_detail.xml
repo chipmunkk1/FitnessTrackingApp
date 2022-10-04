@@ -74,6 +74,7 @@
         android:text="Male" />
 
     <CheckBox
+        android:id="@+id/CheckBoxFemale"
         android:layout_width="120dp"
         android:layout_height="wrap_content"
         android:layout_margin="20dp"
