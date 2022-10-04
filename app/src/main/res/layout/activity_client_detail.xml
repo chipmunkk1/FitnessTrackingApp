@@ -2,7 +2,6 @@
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
-    android:id="@+id/ChechBoxFemale"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@drawable/background"
@@ -85,18 +84,27 @@
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content">
+        android:layout_height="wrap_content" />
 
-        <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etActive"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content"
-            android:layout_margin="20dp"
-            android:background="#30ffffff"
-            android:drawableRight="@drawable/ic_baseline_directions_run_24"
-            android:hint="Active" />
+    <TextView
+        android:id="@+id/txtView1"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="20dp"
+        android:text="Active:"
+        android:textColor="@color/black"
+        android:textSize="25dp" />
 
-    </com.google.android.material.textfield.TextInputLayout>
+    <SeekBar
+        android:id="@+id/ActiveSeekBar"
+        android:layout_width="match_parent"
+        android:layout_height="50dp"
+        android:layout_margin="20dp"
+        android:background="#30ffffff" />
+
+
+    />
+
 
     <Button
         android:id="@+id/btnCheck"
