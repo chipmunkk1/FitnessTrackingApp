@@ -49,6 +49,9 @@ public class signIn extends AppCompatActivity {
         });
     }
         private void checkAndSave(){
+            //converting a string to integer
+            //Double.parseDouble(the id for the field)
+
             String email=etEmail.getText().toString();
             String pass=etPass.getText().toString();
             boolean isOk=true;

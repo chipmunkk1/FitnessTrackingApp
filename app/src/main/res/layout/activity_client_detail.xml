@@ -31,7 +31,8 @@
             android:layout_margin="20dp"
             android:layout_marginBottom="20dp"
             android:background="#30ffffff"
-            android:hint="Weight" />
+            android:hint="Weight"
+            android:inputType="numberDecimal" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -45,7 +46,8 @@
             android:layout_margin="20dp"
             android:layout_marginBottom="20dp"
             android:background="#30ffffff"
-            android:hint="Length" />
+            android:hint="Length"
+            android:inputType="numberDecimal" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <com.google.android.material.textfield.TextInputLayout
@@ -59,7 +61,8 @@
             android:layout_margin="20dp"
             android:layout_marginBottom="20dp"
             android:background="#30ffffff"
-            android:hint="Age" />
+            android:hint="Age"
+            android:inputType="numberDecimal" />
     </com.google.android.material.textfield.TextInputLayout>
 
     <CheckBox
@@ -102,17 +105,36 @@
         android:layout_margin="20dp"
         android:background="#30ffffff" />
 
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:orientation="horizontal">
+
+        <Button
+            android:id="@+id/btnBulk"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:backgroundTint="@color/teal_200"
+            android:text="Bulk"
+            android:textColor="@color/black" />
+        <Button
+            android:id="@+id/btnCut"
+            android:layout_width="200dp"
+            android:layout_height="wrap_content"
+            android:layout_margin="2dp"
+            android:backgroundTint="@color/teal_200"
+            android:text="Cut"
+            android:textColor="@color/black" />
+    </LinearLayout>
+
 
     />
 
 
-    <Button
-        android:id="@+id/btnCheck"
-        android:layout_width="108dp"
-        android:layout_height="wrap_content"
-        android:layout_gravity="center"
-        android:layout_margin="2dp"
-        android:backgroundTint="@color/teal_200"
-        android:text="Check"
-        android:textColor="@color/black" />
+
+
+
+
+
 </LinearLayout>

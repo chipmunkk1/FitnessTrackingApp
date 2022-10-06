@@ -14,7 +14,7 @@
         android:theme="@style/Theme.RohiRealFinalProject"
         tools:targetApi="31">
         <activity
-            android:name=".BulkOrCut"
+            android:name=".MainPage"
             android:exported="false">
             <meta-data
                 android:name="android.app.lib_name"
