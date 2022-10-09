@@ -24,6 +24,8 @@ public class ClientDetail extends AppCompatActivity {
     private SeekBar ActiveSeekBar;
     private Button btnBulk,btnCut;
 
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -59,127 +61,162 @@ public class ClientDetail extends AppCompatActivity {
     }
 
     public void CheckAndSave2(){
-        //converting string to integer:
         String Length=etLength.getText().toString();
-        double L = Double.parseDouble(Length);
 
         String Age= etAge.getText().toString();
-        double A = Double.parseDouble(Age);
 
         String Weight=etWeight.getText().toString();
-        double W = Double.parseDouble(Weight);
-
 
         boolean isOk=true;
-
-        if(W>200 ||W<40 ){
-            etWeight.setError("Enter a Valid Weight!");
-            isOk=false;
-        }
-        if(Weight.length()==0){
-            etWeight.setError("Enter your Length");
-            isOk=false;
-        }
-
-        if(L>220 || L<140){
-            etLength.setError("Enter a Valid Length");
-            isOk=false;
-        }
         if(Length.length()==0){
-            etLength.setError("Enter your Length");
+            etLength.setError("Enter you Length");
+            isOk=false;
         }
 
-        if(A>80|| A<14){
-            if(A>80) {
-                etAge.setError("You are too Old");
-                isOk=false;
-            }
-            else if(A<14) {
-                etAge.setError("You are too young");
-                isOk = false;
-            }
+        if(Weight.length()==0){
+            etWeight.setError("Enter you Weight");
+            isOk=false;
         }
 
         if(Age.length()==0){
             etAge.setError("Enter your Age");
-            isOk = false;
+            isOk=false;
         }
 
-        if(isOk){
-            Intent i = new Intent(ClientDetail.this,MainPage.class);
-            startActivity(i);
-        }
-
-        else{
+        if(isOk==false){
             Toast.makeText(ClientDetail.this, "Complete your details", Toast.LENGTH_SHORT).show();
         }
 
+        else{
+            int L = Integer.parseInt(Length);
+            int A = Integer.parseInt(Age);
+            int W = Integer.parseInt(Weight);
+            if(W>200 ||W<40 ){
+                etWeight.setError("Enter a Valid Weight!");
+                isOk=false;
+            }
+            if(W==0){
+                etWeight.setError("Enter your Weight");
+                isOk=false;
+            }
+
+            if(L>220 || L<140){
+                etLength.setError("Enter a Valid Length");
+                isOk=false;
+            }
+            if(L==0){
+                etLength.setError("Enter your Length");
+                isOk=false;
+            }
+
+            if(A>80|| A<12){
+                if(A>80) {
+                    etAge.setError("You are too Old");
+                    isOk=false;
+                }
+                else if(A<12) {
+                    etAge.setError("You are too young");
+                    isOk = false;
+                }
+            }
+
+            if(A==0){
+                etAge.setError("Enter your Age");
+                isOk = false;
+            }
+
+
+            if(isOk) {
+                Intent i = new Intent(ClientDetail.this, MainPage.class);
+                startActivity(i);
+            }
+
+            else{
+                Toast.makeText(ClientDetail.this, "Complete your details", Toast.LENGTH_SHORT).show();
+            }
+
+
+        }
     }
-
-
-
 
 
     public void CheckAndSave(){
         //converting string to integer:
         String Length=etLength.getText().toString();
-        double L=Double.parseDouble(Length);
-        L =0;
 
         String Age= etAge.getText().toString();
-        double A=Double.parseDouble(Age);
-        A =0;
 
         String Weight=etWeight.getText().toString();
-        double W=Double.parseDouble(Weight);
-        W =0;
-
-
 
         boolean isOk=true;
-
-        if(W>200 ||W<40 ){
-            etWeight.setError("Enter a Valid Weight!");
-            isOk=false;
-        }
-        if(Weight.length()==0){
-            etWeight.setError("Enter your Length");
-            isOk=false;
-        }
-
-        if(L>220 || L<140){
-            etLength.setError("Enter a Valid Length");
-            isOk=false;
-        }
         if(Length.length()==0){
-            etLength.setError("Enter your Length");
+            etLength.setError("Enter you Length");
             isOk=false;
         }
 
-        if(A>80|| A<14){
-            if(A>80) {
-                etAge.setError("You are too Old");
-                isOk=false;
-            }
-            else if(A<14) {
-                etAge.setError("You are too young");
-                isOk = false;
-            }
+        if(Weight.length()==0){
+            etWeight.setError("Enter you Weight");
+            isOk=false;
         }
 
         if(Age.length()==0){
             etAge.setError("Enter your Age");
-            isOk = false;
+            isOk=false;
         }
 
-
-        if(isOk){
-            Intent i = new Intent(ClientDetail.this,MainPage.class);
-            startActivity(i);
+        if(isOk==false){
+            Toast.makeText(ClientDetail.this, "Complete your details", Toast.LENGTH_SHORT).show();
         }
 
         else{
-            Toast.makeText(ClientDetail.this, "Complete your details", Toast.LENGTH_SHORT).show();
+            int L = Integer.parseInt(Length);
+            int A = Integer.parseInt(Age);
+            int W = Integer.parseInt(Weight);
+            if(W>200 ||W<40 ){
+                etWeight.setError("Enter a Valid Weight!");
+                isOk=false;
+            }
+            if(W==0){
+                etWeight.setError("Enter your Weight");
+                isOk=false;
+            }
+
+            if(L>220 || L<140){
+                etLength.setError("Enter a Valid Length");
+                isOk=false;
+            }
+            if(L==0){
+                etLength.setError("Enter your Length");
+                isOk=false;
+            }
+
+            if(A>80|| A<12){
+                if(A>80) {
+                    etAge.setError("You are too Old");
+                    isOk=false;
+                }
+                else if(A<12) {
+                    etAge.setError("You are too young");
+                    isOk = false;
+                }
+            }
+
+            if(A==0){
+                etAge.setError("Enter your Age");
+                isOk = false;
+            }
+
+
+            if(isOk) {
+                Intent i = new Intent(ClientDetail.this, MainPage.class);
+                startActivity(i);
+            }
+
+            else{
+                Toast.makeText(ClientDetail.this, "Complete your details", Toast.LENGTH_SHORT).show();
+            }
+
+
         }
 
 

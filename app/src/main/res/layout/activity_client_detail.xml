@@ -31,7 +31,7 @@
             android:layout_margin="20dp"
             android:layout_marginBottom="20dp"
             android:background="#30ffffff"
-            android:hint="Weight"
+            android:hint="Weight (kg)"
             android:inputType="numberDecimal" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -46,7 +46,7 @@
             android:layout_margin="20dp"
             android:layout_marginBottom="20dp"
             android:background="#30ffffff"
-            android:hint="Length"
+            android:hint="Height (cm)"
             android:inputType="numberDecimal" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -61,7 +61,7 @@
             android:layout_margin="20dp"
             android:layout_marginBottom="20dp"
             android:background="#30ffffff"
-            android:hint="Age"
+            android:hint="Age "
             android:inputType="numberDecimal" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -112,7 +112,7 @@
 
         <Button
             android:id="@+id/btnBulk"
-            android:layout_width="200dp"
+            android:layout_width="201dp"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
             android:backgroundTint="@color/teal_200"
@@ -120,7 +120,7 @@
             android:textColor="@color/black" />
         <Button
             android:id="@+id/btnCut"
-            android:layout_width="200dp"
+            android:layout_width="201dp"
             android:layout_height="wrap_content"
             android:layout_margin="2dp"
             android:backgroundTint="@color/teal_200"
