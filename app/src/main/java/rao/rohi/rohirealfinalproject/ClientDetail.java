@@ -100,7 +100,7 @@ public class ClientDetail extends AppCompatActivity {
                 isOk=false;
             }
 
-            if(L>220 || L<140){
+            if(L>220 || L<130){
                 etLength.setError("Enter a Valid Length");
                 isOk=false;
             }
@@ -127,7 +127,7 @@ public class ClientDetail extends AppCompatActivity {
 
 
             if(isOk) {
-                Intent i = new Intent(ClientDetail.this, MainPage.class);
+                Intent i = new Intent(ClientDetail.this, MainActivity.class);
                 startActivity(i);
             }
 
@@ -153,6 +153,7 @@ public class ClientDetail extends AppCompatActivity {
             etLength.setError("Enter you Length");
             isOk=false;
         }
+
 
         if(Weight.length()==0){
             etWeight.setError("Enter you Weight");
@@ -208,7 +209,7 @@ public class ClientDetail extends AppCompatActivity {
 
 
             if(isOk) {
-                Intent i = new Intent(ClientDetail.this, MainPage.class);
+                Intent i = new Intent(ClientDetail.this,MainActivity.class);
                 startActivity(i);
             }
 
@@ -218,8 +219,5 @@ public class ClientDetail extends AppCompatActivity {
 
 
         }
-
-
     }
-
 }

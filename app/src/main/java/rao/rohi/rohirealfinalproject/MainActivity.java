@@ -8,6 +8,8 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 
+import com.google.firebase.auth.FirebaseAuth;
+
 public class MainActivity extends AppCompatActivity {
 
 
@@ -34,8 +36,9 @@ public class MainActivity extends AppCompatActivity {
         }
 
         else if(item.getItemId()==R.id.ItmSignOut){
-            Intent i = new Intent(MainActivity.this,signIn.class);
-            startActivity(i);
+            //to sign out from ur account
+            FirebaseAuth.getInstance().signOut();
+            finish();
         }
         else if (item.getItemId()==R.id.ItmHistory){
             Intent i = new Intent(MainActivity.this,History.class);

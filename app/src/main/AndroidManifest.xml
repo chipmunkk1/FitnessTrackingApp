@@ -14,13 +14,6 @@
         android:theme="@style/Theme.RohiRealFinalProject"
         tools:targetApi="31">
         <activity
-            android:name=".MainPage"
-            android:exported="false">
-            <meta-data
-                android:name="android.app.lib_name"
-                android:value="" />
-        </activity>
-        <activity
             android:name=".ClientDetail"
             android:exported="false">
             <meta-data
