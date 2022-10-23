@@ -1,8 +1,10 @@
 package rao.rohi.rohirealfinalproject;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -36,9 +38,34 @@ public class MainActivity extends AppCompatActivity {
         }
 
         else if(item.getItemId()==R.id.ItmSignOut){
-            //to sign out from ur account
-            FirebaseAuth.getInstance().signOut();
-            finish();
+            //signing out from the account
+            //1.building the Constructer of the dialog
+            AlertDialog.Builder builder=new AlertDialog.Builder(this);
+            builder.setTitle("Sign In");
+            builder.setMessage("Want To Sign Out?");
+            builder.setPositiveButton("Sign out", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    //disappear the dialog message
+                    dialogInterface.dismiss();
+                    //signing out from current account
+                    FirebaseAuth.getInstance().signOut();
+                    //exiting the screen
+                    finish();
+                }
+            });
+
+            builder.setNegativeButton("Stay In", new DialogInterface.OnClickListener() {
+                @Override
+                public void onClick(DialogInterface dialogInterface, int i) {
+                    //close the dialog's square that appears when i press the sign out item
+                    dialogInterface.cancel();
+
+                }
+            });
+            //now building the dialog
+            AlertDialog dialog=builder.create();
+            dialog.show();
         }
         else if (item.getItemId()==R.id.ItmHistory){
             Intent i = new Intent(MainActivity.this,History.class);
