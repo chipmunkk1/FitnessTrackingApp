@@ -8,6 +8,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
+import android.widget.RadioButton;
 import android.widget.SeekBar;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -20,10 +21,9 @@ import com.google.firebase.auth.FirebaseAuth;
 public class ClientDetail extends AppCompatActivity {
     private TextView txtView,txtView1;
     private TextInputEditText etWeight,etLength,etAge;
-    private CheckBox CheckBoxFemale,CheckBoxMale;
     private SeekBar ActiveSeekBar;
     private Button btnBulk,btnCut;
-
+    private RadioButton radioButtonMale,radioButtonFemale;
 
 
     @Override
@@ -31,8 +31,8 @@ public class ClientDetail extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_client_detail);
 
-        CheckBoxFemale=findViewById(R.id.CheckBoxFemale);
-        CheckBoxMale=findViewById(R.id.CheckBoxMale);
+        radioButtonMale=findViewById(R.id.radioButtonMale);
+        radioButtonFemale=findViewById(R.id.radioButtonFemale);
         txtView=findViewById(R.id.txtView);
         etWeight=findViewById(R.id.etWeight);
         etLength=findViewById(R.id.etLength);

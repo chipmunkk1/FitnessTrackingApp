@@ -20,8 +20,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
-
     }
 
     @Override
@@ -72,8 +70,12 @@ public class MainActivity extends AppCompatActivity {
             startActivity(i);
 
         }
+
+        else if(item.getItemId()==R.id.ItmProfile){
+            Intent i =new Intent(MainActivity.this,ShowProfile.class);
+            startActivity(i);
+        }
+
         return true;
     }
-
-
 }

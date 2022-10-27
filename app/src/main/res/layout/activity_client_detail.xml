@@ -12,8 +12,8 @@
         android:id="@+id/txtView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginTop="30dp"
-        android:layout_marginBottom="15dp"
+        android:layout_marginTop="50dp"
+        android:layout_marginBottom="30dp"
         android:gravity="center"
         android:text="Enter your details"
         android:textColor="@color/black"
@@ -65,29 +65,29 @@
             android:inputType="numberDecimal" />
     </com.google.android.material.textfield.TextInputLayout>
 
-    <CheckBox
-        android:id="@+id/CheckBoxMale"
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:layout_marginLeft="15dp"
-        android:background="#30ffffff"
-        android:drawableRight="@drawable/ic_baseline_boy_24"
-        android:text="Male" />
-
-    <CheckBox
-        android:id="@+id/CheckBoxFemale"
-        android:layout_width="120dp"
-        android:layout_height="wrap_content"
-        android:layout_margin="20dp"
-        android:layout_marginLeft="15dp"
-        android:background="#30ffffff"
-        android:drawableRight="@drawable/ic_baseline_girl_24"
-        android:text="Female" />
 
     <com.google.android.material.textfield.TextInputLayout
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content">
+
+        <RadioGroup
+            android:layout_width="match_parent"
+            android:layout_height="match_parent">
+
+            <RadioButton
+                android:id="@+id/radioButtonMale"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:drawableRight="@drawable/ic_baseline_boy_24"
+                android:text="Male" />
+
+            <RadioButton
+                android:id="@+id/radioButtonFemale"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:text="Female" />
+        </RadioGroup>
+    </com.google.android.material.textfield.TextInputLayout>
 
     <TextView
         android:id="@+id/txtView1"
@@ -95,19 +95,22 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="20dp"
         android:text="Active:"
+        android:layout_marginTop="30dp"
         android:textColor="@color/black"
         android:textSize="25dp" />
 
     <SeekBar
         android:id="@+id/ActiveSeekBar"
+        style="@style/Widget.AppCompat.SeekBar.Discrete"
         android:layout_width="match_parent"
         android:layout_height="50dp"
         android:layout_margin="20dp"
-        android:background="#30ffffff" />
+        android:background="#30ffffff"
+        android:max="2" />
 
     <LinearLayout
         android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_height="wrap_content"
         android:orientation="horizontal">
 
         <Button
@@ -118,6 +121,7 @@
             android:backgroundTint="@color/teal_200"
             android:text="Bulk"
             android:textColor="@color/black" />
+
         <Button
             android:id="@+id/btnCut"
             android:layout_width="201dp"
@@ -127,14 +131,6 @@
             android:text="Cut"
             android:textColor="@color/black" />
     </LinearLayout>
-
-
     />
-
-
-
-
-
-
 
 </LinearLayout>

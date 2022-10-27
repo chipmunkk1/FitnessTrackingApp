@@ -4,14 +4,19 @@
 
 
     <item
-        android:id="@+id/ItmSettings"
-        android:icon="@android:drawable/ic_menu_manage"
-        android:title="Settings"
-        app:showAsAction="always|withText" />
+        android:id="@+id/ItmProfile"
+        android:icon="@drawable/ic_baseline_person_outline_24"
+        android:title="ItmProfile"
+        app:showAsAction="always" />
     <item
         android:id="@+id/ItmHistory"
         android:icon="@android:drawable/ic_menu_recent_history"
         android:title="History"
+        app:showAsAction="always|withText" />
+    <item
+        android:id="@+id/ItmSettings"
+        android:icon="@android:drawable/ic_menu_manage"
+        android:title="Settings"
         app:showAsAction="always|withText" />
     <item
         android:id="@+id/ItmSignOut"
