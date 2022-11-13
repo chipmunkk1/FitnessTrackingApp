@@ -15,6 +15,10 @@ import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 
+/**
+ * sign in activity
+ */
+
 public class signIn extends AppCompatActivity {
     private TextInputEditText etEmail;
     private TextInputEditText etPass;
@@ -36,7 +40,6 @@ public class signIn extends AppCompatActivity {
             public void onClick(View view) {
                 Intent i = new Intent(signIn.this, SignUp.class);
                 startActivity(i);
-
             }
         });
 
@@ -52,6 +55,7 @@ public class signIn extends AppCompatActivity {
             //converting a string to integer
             //Double.parseDouble(the id for the field)
 
+            //condition to join to the main
             String email=etEmail.getText().toString();
             String pass=etPass.getText().toString();
             boolean isOk=true;
@@ -78,12 +82,14 @@ public class signIn extends AppCompatActivity {
                 auth.signInWithEmailAndPassword(email,pass).addOnCompleteListener(new OnCompleteListener<AuthResult>() {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
+                        //if all is true then go to client activity
                         if(task.isSuccessful()){
                             Toast.makeText(signIn.this, "Successful", Toast.LENGTH_SHORT).show();
                             Intent i = new Intent(signIn.this,ClientDetail.class);
                             startActivity(i);
                             finish();
                         }
+                        //else show (toast) wtrong email or password and dont allow to join
                         else{
                             Toast.makeText(signIn.this, "Wrong password or Email", Toast.LENGTH_SHORT).show();
                         }

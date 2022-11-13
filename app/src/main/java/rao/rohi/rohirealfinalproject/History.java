@@ -4,6 +4,10 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
 
+/**
+ * history activity
+ */
+
 public class History extends AppCompatActivity {
 
     @Override

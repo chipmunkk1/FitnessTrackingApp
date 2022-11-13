@@ -12,6 +12,9 @@ import android.view.MenuItem;
 
 import com.google.firebase.auth.FirebaseAuth;
 
+/**
+ * main activity
+ */
 public class MainActivity extends AppCompatActivity {
 
 
@@ -29,6 +32,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
+
     public boolean onOptionsItemSelected(@NonNull MenuItem item) {
         if(item.getItemId()==R.id.ItmSettings){
             Intent i = new Intent(MainActivity.this,Settings.class);

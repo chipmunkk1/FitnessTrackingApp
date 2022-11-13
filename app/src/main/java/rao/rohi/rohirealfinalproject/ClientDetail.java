@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CheckBox;
@@ -14,10 +15,17 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.FirebaseDatabase;
 
+import rao.rohi.rohirealfinalproject.data.profile;
+
+/**
+ * client detail
+ */
 public class ClientDetail extends AppCompatActivity {
     private TextView txtView,txtView1;
     private TextInputEditText etWeight,etLength,etAge;
@@ -67,6 +75,8 @@ public class ClientDetail extends AppCompatActivity {
 
         String Weight=etWeight.getText().toString();
 
+        int Active =ActiveSeekBar.getProgress();
+
         boolean isOk=true;
         if(Length.length()==0){
             etLength.setError("Enter you Length");
@@ -91,6 +101,7 @@ public class ClientDetail extends AppCompatActivity {
             int L = Integer.parseInt(Length);
             int A = Integer.parseInt(Age);
             int W = Integer.parseInt(Weight);
+            int Act =ActiveSeekBar.getProgress();
             if(W>200 ||W<40 ){
                 etWeight.setError("Enter a Valid Weight!");
                 isOk=false;
@@ -134,8 +145,31 @@ public class ClientDetail extends AppCompatActivity {
             else{
                 Toast.makeText(ClientDetail.this, "Complete your details", Toast.LENGTH_SHORT).show();
             }
+            profile p=new profile();
+            p.setWeight(W);
+            p.setLength(L);
+            p.setAge(A);
+            p.setActive(Act);
+            //استخراج الرقم المميز لل Uid
+            String owner=FirebaseAuth.getInstance().getCurrentUser().getUid();
+            p.setOwner(owner);
+            //أستخراج الرقم المميز للمهمة
+            String key= FirebaseDatabase.getInstance().getReference().child("Profile").child(owner).push().getKey();
+            p.setKey(key);
 
-
+            //حفظ بالخادم
+            FirebaseDatabase.getInstance().getReference().child("Profile").child(owner).child(key).setValue(p).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if(task.isSuccessful()){
+                        finish();
+                        Toast.makeText(ClientDetail.this,"Detail Saved",Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        Toast.makeText(ClientDetail.this,"Added failed"+task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
         }
     }
 
@@ -143,9 +177,7 @@ public class ClientDetail extends AppCompatActivity {
     public void CheckAndSave(){
         //converting string to integer:
         String Length=etLength.getText().toString();
-
         String Age= etAge.getText().toString();
-
         String Weight=etWeight.getText().toString();
 
         boolean isOk=true;
@@ -153,7 +185,6 @@ public class ClientDetail extends AppCompatActivity {
             etLength.setError("Enter you Length");
             isOk=false;
         }
-
 
         if(Weight.length()==0){
             etWeight.setError("Enter you Weight");
@@ -173,6 +204,7 @@ public class ClientDetail extends AppCompatActivity {
             int L = Integer.parseInt(Length);
             int A = Integer.parseInt(Age);
             int W = Integer.parseInt(Weight);
+            int Act =ActiveSeekBar.getProgress();
             if(W>200 ||W<40 ){
                 etWeight.setError("Enter a Valid Weight!");
                 isOk=false;
@@ -201,7 +233,6 @@ public class ClientDetail extends AppCompatActivity {
                     isOk = false;
                 }
             }
-
             if(A==0){
                 etAge.setError("Enter your Age");
                 isOk = false;
@@ -216,8 +247,31 @@ public class ClientDetail extends AppCompatActivity {
             else{
                 Toast.makeText(ClientDetail.this, "Complete your details", Toast.LENGTH_SHORT).show();
             }
+            profile p=new profile();
+            p.setWeight(W);
+            p.setLength(L);
+            p.setAge(A);
+            p.setActive(Act);
+            //استخراج الرقم المميز لل Uid
+            String owner=FirebaseAuth.getInstance().getCurrentUser().getUid();
+            p.setOwner(owner);
+            //أستخراج الرقم المميز للمهمة
+            String key= FirebaseDatabase.getInstance().getReference().child("Profile").child(owner).push().getKey();
+            p.setKey(key);
 
-
+            //حفظ بالخادم
+            FirebaseDatabase.getInstance().getReference().child("Profile").child(owner).child(key).setValue(p).addOnCompleteListener(new OnCompleteListener<Void>() {
+                @Override
+                public void onComplete(@NonNull Task<Void> task) {
+                    if(task.isSuccessful()){
+                        finish();
+                        Toast.makeText(ClientDetail.this,"Detail Saved",Toast.LENGTH_SHORT).show();
+                    }
+                    else{
+                        Toast.makeText(ClientDetail.this,"Added failed"+task.getException().getMessage(),Toast.LENGTH_SHORT).show();
+                    }
+                }
+            });
         }
     }
 }

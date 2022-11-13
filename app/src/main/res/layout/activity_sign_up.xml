@@ -31,6 +31,7 @@
             android:drawableLeft="@drawable/ic_baseline_person_outline_24"
             android:drawablePadding="20dp"
             android:hint="Email"
+            android:layout_margin="30dp"
             android:textColor="@color/black"
             android:padding="20dp" />
     </com.google.android.material.textfield.TextInputLayout>
@@ -49,6 +50,7 @@
             android:drawableLeft="@drawable/ic_baseline_info_24"
             android:drawablePadding="20dp"
             android:layout_marginTop="20dp"
+            android:layout_margin="30dp"
             android:hint="Password" />
     </com.google.android.material.textfield.TextInputLayout>
 
@@ -67,6 +69,7 @@
             android:layout_marginTop="20dp"
             android:layout_marginBottom="0dp"
             android:background="#30ffffff"
+            android:layout_margin="30dp"
             android:hint="Confirm Password" />
     </com.google.android.material.textfield.TextInputLayout>
 

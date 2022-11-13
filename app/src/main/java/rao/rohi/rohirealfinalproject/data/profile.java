@@ -1,7 +1,13 @@
-package data;
+package rao.rohi.rohirealfinalproject.data;
+
+/**
+ * profile
+ */
 
 public class profile {
     private double weight;
+    private String key;
+    private String owner;
     private int length;
     private int age;
     private String gender;
@@ -9,6 +15,22 @@ public class profile {
 
     public profile(){
 
+    }
+
+    public String getKey() {
+        return key;
+    }
+
+    public void setKey(String key) {
+        this.key = key;
+    }
+
+    public void setOwner(String owner) {
+        this.owner = owner;
+    }
+
+    public String getOwner() {
+        return owner;
     }
 
     public double getWeight() {

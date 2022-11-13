@@ -9,6 +9,10 @@ import android.widget.ImageView;
 
 import com.google.firebase.auth.FirebaseAuth;
 
+/**
+ * splash screen activity
+ */
+
 public class splashscreen extends AppCompatActivity {
 
 
