@@ -5,19 +5,16 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.view.View;
 import android.widget.Button;
-import android.widget.CheckBox;
 import android.widget.RadioButton;
-import android.widget.SeekBar;
+import android.widget.RatingBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.textfield.TextInputEditText;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.FirebaseDatabase;
 
@@ -28,8 +25,8 @@ import rao.rohi.rohirealfinalproject.data.profile;
  */
 public class ClientDetail extends AppCompatActivity {
     private TextView txtView,txtView1;
-    private TextInputEditText etWeight,etLength,etAge;
-    private SeekBar ActiveSeekBar;
+    private TextInputEditText etWeight,etHeight,etAge;
+    private RatingBar ActiveBar;
     private Button btnBulk,btnCut;
     private RadioButton radioButtonMale,radioButtonFemale;
 
@@ -43,10 +40,10 @@ public class ClientDetail extends AppCompatActivity {
         radioButtonFemale=findViewById(R.id.radioButtonFemale);
         txtView=findViewById(R.id.txtView);
         etWeight=findViewById(R.id.etWeight);
-        etLength=findViewById(R.id.etLength);
+        etHeight=findViewById(R.id.etHeight);
         etAge=findViewById(R.id.etAge);
         txtView1=findViewById(R.id.txtView1);
-        ActiveSeekBar=findViewById(R.id.ActiveSeekBar);
+        ActiveBar=findViewById(R.id.ActiveBar);
         btnBulk=findViewById(R.id.btnBulk);
         btnCut=findViewById(R.id.btnCut);
 
@@ -69,17 +66,17 @@ public class ClientDetail extends AppCompatActivity {
     }
 
     public void CheckAndSave2(){
-        String Length=etLength.getText().toString();
+        String Height=etHeight.getText().toString();
 
         String Age= etAge.getText().toString();
 
         String Weight=etWeight.getText().toString();
 
-        int Active =ActiveSeekBar.getProgress();
+        int Active =ActiveBar.getProgress();
 
         boolean isOk=true;
-        if(Length.length()==0){
-            etLength.setError("Enter you Length");
+        if(Height.length()==0){
+            etHeight.setError("Enter you Length");
             isOk=false;
         }
 
@@ -97,92 +94,87 @@ public class ClientDetail extends AppCompatActivity {
             Toast.makeText(ClientDetail.this, "Complete your details", Toast.LENGTH_SHORT).show();
         }
 
-        else{
-            int L = Integer.parseInt(Length);
+        else {
+            int L = Integer.parseInt(Height);
             int A = Integer.parseInt(Age);
             int W = Integer.parseInt(Weight);
-            int Act =ActiveSeekBar.getProgress();
-            if(W>200 ||W<40 ){
+            int Act = ActiveBar.getProgress();
+            if (W > 200 || W < 40) {
                 etWeight.setError("Enter a Valid Weight!");
-                isOk=false;
+                isOk = false;
             }
-            if(W==0){
+            if (W == 0) {
                 etWeight.setError("Enter your Weight");
-                isOk=false;
+                isOk = false;
             }
 
-            if(L>220 || L<130){
-                etLength.setError("Enter a Valid Length");
-                isOk=false;
+            if (L > 220 || L < 130) {
+                etHeight.setError("Enter a Valid Length");
+                isOk = false;
             }
-            if(L==0){
-                etLength.setError("Enter your Length");
-                isOk=false;
+            if (L == 0) {
+                etHeight.setError("Enter your Length");
+                isOk = false;
             }
 
-            if(A>80|| A<12){
-                if(A>80) {
+            if (A > 80 || A < 12) {
+                if (A > 80) {
                     etAge.setError("You are too Old");
-                    isOk=false;
-                }
-                else if(A<12) {
+                    isOk = false;
+                } else if (A < 12) {
                     etAge.setError("You are too young");
                     isOk = false;
                 }
             }
 
-            if(A==0){
+            if (A == 0) {
                 etAge.setError("Enter your Age");
                 isOk = false;
             }
 
 
-            if(isOk) {
-                Intent i = new Intent(ClientDetail.this, MainActivity.class);
-                startActivity(i);
-            }
-
-            else{
+            if (!isOk) {
                 Toast.makeText(ClientDetail.this, "Complete your details", Toast.LENGTH_SHORT).show();
-            }
-            profile p=new profile();
-            p.setWeight(W);
-            p.setLength(L);
-            p.setAge(A);
-            p.setActive(Act);
-            //استخراج الرقم المميز لل Uid
-            String owner=FirebaseAuth.getInstance().getCurrentUser().getUid();
-            p.setOwner(owner);
-            //أستخراج الرقم المميز للمهمة
-            String key= FirebaseDatabase.getInstance().getReference().child("Profile").child(owner).push().getKey();
-            p.setKey(key);
+            } else {
+                profile p = new profile();
+                p.setWeight(W);
+                p.setLength(L);
+                p.setAge(A);
+                p.setActive(Act);
+                //استخراج الرقم المميز لل Uid
+                String owner = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                p.setOwner(owner);
+                //أستخراج الرقم المميز للمهمة
+                String key = FirebaseDatabase.getInstance().getReference().child("Profile").child(owner).push().getKey();
+                p.setKey(key);
 
-            //حفظ بالخادم
-            FirebaseDatabase.getInstance().getReference().child("Profile").child(owner).child(key).setValue(p).addOnCompleteListener(new OnCompleteListener<Void>() {
-                @Override
-                public void onComplete(@NonNull Task<Void> task) {
-                    if(task.isSuccessful()){
-                        finish();
-                        Toast.makeText(ClientDetail.this,"Detail Saved",Toast.LENGTH_SHORT).show();
+                //حفظ بالخادم
+                FirebaseDatabase.getInstance().getReference().child("Profile").child(owner).child(key).setValue(p).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Intent i = new Intent(ClientDetail.this, MainActivity.class);
+                            startActivity(i);
+                            Toast.makeText(ClientDetail.this, "Detail Saved", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(ClientDetail.this, "Added failed" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        }
                     }
-                    else{
-                        Toast.makeText(ClientDetail.this,"Added failed"+task.getException().getMessage(),Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
+                });
+            }
         }
     }
 
 
     public void CheckAndSave(){
         //converting string to integer:
-        String Length=etLength.getText().toString();
+        String Height=etHeight.getText().toString();
         String Age= etAge.getText().toString();
         String Weight=etWeight.getText().toString();
 
         boolean isOk=true;
-        if(Length.length()==0){
-            etLength.setError("Enter you Length");
+        if(Height.length()==0){
+            etHeight.setError("Enter you Length");
             isOk=false;
         }
 
@@ -201,10 +193,10 @@ public class ClientDetail extends AppCompatActivity {
         }
 
         else{
-            int L = Integer.parseInt(Length);
+            int L = Integer.parseInt(Height);
             int A = Integer.parseInt(Age);
             int W = Integer.parseInt(Weight);
-            int Act =ActiveSeekBar.getProgress();
+            int Act =ActiveBar.getProgress();
             if(W>200 ||W<40 ){
                 etWeight.setError("Enter a Valid Weight!");
                 isOk=false;
@@ -215,11 +207,11 @@ public class ClientDetail extends AppCompatActivity {
             }
 
             if(L>220 || L<140){
-                etLength.setError("Enter a Valid Length");
+                etHeight.setError("Enter a Valid Length");
                 isOk=false;
             }
             if(L==0){
-                etLength.setError("Enter your Length");
+                etHeight.setError("Enter your Length");
                 isOk=false;
             }
 
@@ -239,39 +231,35 @@ public class ClientDetail extends AppCompatActivity {
             }
 
 
-            if(isOk) {
-                Intent i = new Intent(ClientDetail.this,MainActivity.class);
-                startActivity(i);
-            }
-
-            else{
+            if (!isOk) {
                 Toast.makeText(ClientDetail.this, "Complete your details", Toast.LENGTH_SHORT).show();
-            }
-            profile p=new profile();
-            p.setWeight(W);
-            p.setLength(L);
-            p.setAge(A);
-            p.setActive(Act);
-            //استخراج الرقم المميز لل Uid
-            String owner=FirebaseAuth.getInstance().getCurrentUser().getUid();
-            p.setOwner(owner);
-            //أستخراج الرقم المميز للمهمة
-            String key= FirebaseDatabase.getInstance().getReference().child("Profile").child(owner).push().getKey();
-            p.setKey(key);
+            } else {
+                profile p = new profile();
+                p.setWeight(W);
+                p.setLength(L);
+                p.setAge(A);
+                p.setActive(Act);
+                //استخراج الرقم المميز لل Uid
+                String owner = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                p.setOwner(owner);
+                //أستخراج الرقم المميز للمهمة
+                String key = FirebaseDatabase.getInstance().getReference().child("Profile").child(owner).push().getKey();
+                p.setKey(key);
 
-            //حفظ بالخادم
-            FirebaseDatabase.getInstance().getReference().child("Profile").child(owner).child(key).setValue(p).addOnCompleteListener(new OnCompleteListener<Void>() {
-                @Override
-                public void onComplete(@NonNull Task<Void> task) {
-                    if(task.isSuccessful()){
-                        finish();
-                        Toast.makeText(ClientDetail.this,"Detail Saved",Toast.LENGTH_SHORT).show();
+                //حفظ بالخادم
+                FirebaseDatabase.getInstance().getReference().child("Profile").child(owner).child(key).setValue(p).addOnCompleteListener(new OnCompleteListener<Void>() {
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        if (task.isSuccessful()) {
+                            Intent i = new Intent(ClientDetail.this, MainActivity.class);
+                            startActivity(i);
+                            Toast.makeText(ClientDetail.this, "Detail Saved", Toast.LENGTH_SHORT).show();
+                        } else {
+                            Toast.makeText(ClientDetail.this, "Added failed" + task.getException().getMessage(), Toast.LENGTH_SHORT).show();
+                        }
                     }
-                    else{
-                        Toast.makeText(ClientDetail.this,"Added failed"+task.getException().getMessage(),Toast.LENGTH_SHORT).show();
-                    }
-                }
-            });
+                });
+            }
         }
     }
 }

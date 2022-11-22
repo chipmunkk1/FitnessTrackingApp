@@ -40,7 +40,7 @@
         android:layout_height="wrap_content">
 
         <com.google.android.material.textfield.TextInputEditText
-            android:id="@+id/etLength"
+            android:id="@+id/etHeight"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_margin="20dp"
@@ -85,6 +85,7 @@
                 android:id="@+id/radioButtonFemale"
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
+                android:drawableRight="@drawable/ic_baseline_girl_24"
                 android:text="Female" />
         </RadioGroup>
     </com.google.android.material.textfield.TextInputLayout>
@@ -99,14 +100,12 @@
         android:textColor="@color/black"
         android:textSize="25dp" />
 
-    <SeekBar
-        android:id="@+id/ActiveSeekBar"
-        style="@style/Widget.AppCompat.SeekBar.Discrete"
+    <RatingBar
+        android:id="@+id/ActiveBar"
+        style="@style/Widget.AppCompat.RatingBar"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:layout_margin="20dp"
-        android:background="#30ffffff"
-        android:max="2" />
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom" />
 
     <LinearLayout
         android:layout_width="match_parent"
