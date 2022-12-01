@@ -23,10 +23,6 @@ public class SignUp extends AppCompatActivity {
     private Button btnCancel,btnSave;
 
 
-
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

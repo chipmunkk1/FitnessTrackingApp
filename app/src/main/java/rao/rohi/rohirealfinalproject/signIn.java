@@ -4,7 +4,9 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.view.View;
 import android.widget.Button;
 import android.widget.Toast;
@@ -25,11 +27,18 @@ public class signIn extends AppCompatActivity {
     private Button btnSignUp;
     private Button btnSignIn;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
+
+        if(FirebaseAuth.getInstance().getCurrentUser()!=null){
+            Intent i = new Intent(signIn.this,MainActivity.class);
+            startActivity(i);
+        }
+
+
+
         etEmail = findViewById(R.id.etEmail);
         etPass = findViewById(R.id.etPass);
         btnSignUp = findViewById(R.id.btnSignUp);
@@ -47,7 +56,7 @@ public class signIn extends AppCompatActivity {
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                checkAndSave();
+                    checkAndSave();
             }
         });
     }
@@ -83,49 +92,20 @@ public class signIn extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         //if all is true then go to client activity
-                        if(task.isSuccessful()){
+                        if (task.isSuccessful()) {
                             Toast.makeText(signIn.this, "Successful", Toast.LENGTH_SHORT).show();
-                            Intent i = new Intent(signIn.this,ClientDetail.class);
+                            Intent i = new Intent(signIn.this, ClientDetail.class);
                             startActivity(i);
                             finish();
                         }
                         //else show (toast) wtrong email or password and dont allow to join
-                        else{
+                        else {
                             Toast.makeText(signIn.this, "Wrong password or Email", Toast.LENGTH_SHORT).show();
                         }
-
                     }
+
                 });
 
             }
-
-
-
-
-
-
-
-
-
-
         }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 }
