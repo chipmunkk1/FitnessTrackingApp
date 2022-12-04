@@ -38,11 +38,11 @@ public class signIn extends AppCompatActivity {
         }
 
 
-
         etEmail = findViewById(R.id.etEmail);
         etPass = findViewById(R.id.etPass);
         btnSignUp = findViewById(R.id.btnSignUp);
         btnSignIn = findViewById(R.id.btnSignIn);
+
 
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override

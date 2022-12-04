@@ -65,6 +65,35 @@ public class ClientDetail extends AppCompatActivity {
 
     }
 
+    public static double BulkingCaloriesFemales(profile p){
+        double BMRForWomen= 655.1+(9.563*p.getWeight())+1.850*p.getLength()-(6.755*p.getAge());
+        if(p.getActive()<=2){
+            return 1.2*BMRForWomen;
+        }
+        else if(p.getActive()>2 && p.getActive()<=5){
+            return BMRForWomen*1.55;
+        }
+        return BMRForWomen*1.725;
+
+    }
+
+
+    public static double BulkingCaloriesMales(profile p){
+        double BMRForMen= 66.47+(13.75*p.getWeight())+5.003*p.getLength()-(6.755*p.getAge());
+        if(p.getActive()<=2){
+            return 1.2*BMRForMen;
+        }
+        else if(p.getActive()>2 && p.getActive()<=5){
+            return BMRForMen*1.55;
+        }
+        return BMRForMen*1.725;
+    }
+
+
+
+
+
+
     public void CheckAndSave2(){
         String Height=etHeight.getText().toString();
 
