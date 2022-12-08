@@ -65,6 +65,9 @@ public class ClientDetail extends AppCompatActivity {
 
     }
 
+
+    //
+    //bulking formula for females
     public static double BulkingCaloriesFemales(profile p){
         double BMRForWomen= 655.1+(9.563*p.getWeight())+1.850*p.getLength()-(6.755*p.getAge());
         if(p.getActive()<=2){
@@ -77,7 +80,8 @@ public class ClientDetail extends AppCompatActivity {
 
     }
 
-
+    //
+    //bulking formula for males
     public static double BulkingCaloriesMales(profile p){
         double BMRForMen= 66.47+(13.75*p.getWeight())+5.003*p.getLength()-(6.755*p.getAge());
         if(p.getActive()<=2){
@@ -90,6 +94,19 @@ public class ClientDetail extends AppCompatActivity {
     }
 
 
+    //
+    //Cutting formula for Females
+    public static double CutCaloriesFemales(profile p){
+        return 10*p.getWeight()+6.25*p.getLength()-5*p.getAge()-161;
+
+    }
+
+    //
+    //Cutting formula for Males
+    public static double CutCaloriesMales(profile p){
+        return 10*p.getWeight()+6.25*p.getLength()-5*p.getAge()+5;
+
+    }
 
 
 
@@ -100,6 +117,9 @@ public class ClientDetail extends AppCompatActivity {
         String Age= etAge.getText().toString();
 
         String Weight=etWeight.getText().toString();
+
+        boolean isMale=radioButtonMale.isChecked();
+
 
         int Active =ActiveBar.getProgress();
 
@@ -170,6 +190,7 @@ public class ClientDetail extends AppCompatActivity {
                 p.setLength(L);
                 p.setAge(A);
                 p.setActive(Act);
+                p.setGender(isMale);
                 //استخراج الرقم المميز لل Uid
                 String owner = FirebaseAuth.getInstance().getCurrentUser().getUid();
                 p.setOwner(owner);
@@ -183,6 +204,7 @@ public class ClientDetail extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
                             Intent i = new Intent(ClientDetail.this, MainActivity.class);
+                            i.putExtra("typ1",p.CuttingCalories());
                             startActivity(i);
                             Toast.makeText(ClientDetail.this, "Detail Saved", Toast.LENGTH_SHORT).show();
                         } else {
@@ -281,6 +303,7 @@ public class ClientDetail extends AppCompatActivity {
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
                             Intent i = new Intent(ClientDetail.this, MainActivity.class);
+                            i.putExtra("typ2",p.BulkingCalories());
                             startActivity(i);
                             Toast.makeText(ClientDetail.this, "Detail Saved", Toast.LENGTH_SHORT).show();
                         } else {
