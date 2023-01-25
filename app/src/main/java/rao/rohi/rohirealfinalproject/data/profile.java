@@ -74,6 +74,7 @@ public class profile {
     }
 
 
+
     //bulking formula for females and males
     public double BulkingCalories(){
         if(this.getGender()==true){

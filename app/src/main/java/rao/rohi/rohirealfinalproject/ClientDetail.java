@@ -66,51 +66,6 @@ public class ClientDetail extends AppCompatActivity {
     }
 
 
-    //
-    //bulking formula for females
-    public static double BulkingCaloriesFemales(profile p){
-        double BMRForWomen= 655.1+(9.563*p.getWeight())+1.850*p.getLength()-(6.755*p.getAge());
-        if(p.getActive()<=2){
-            return 1.2*BMRForWomen;
-        }
-        else if(p.getActive()>2 && p.getActive()<=5){
-            return BMRForWomen*1.55;
-        }
-        return BMRForWomen*1.725;
-
-    }
-
-    //
-    //bulking formula for males
-    public static double BulkingCaloriesMales(profile p){
-        double BMRForMen= 66.47+(13.75*p.getWeight())+5.003*p.getLength()-(6.755*p.getAge());
-        if(p.getActive()<=2){
-            return 1.2*BMRForMen;
-        }
-        else if(p.getActive()>2 && p.getActive()<=5){
-            return BMRForMen*1.55;
-        }
-        return BMRForMen*1.725;
-    }
-
-
-    //
-    //Cutting formula for Females
-    public static double CutCaloriesFemales(profile p){
-        return 10*p.getWeight()+6.25*p.getLength()-5*p.getAge()-161;
-
-    }
-
-    //
-    //Cutting formula for Males
-    public static double CutCaloriesMales(profile p){
-        return 10*p.getWeight()+6.25*p.getLength()-5*p.getAge()+5;
-
-    }
-
-
-
-
     public void CheckAndSave2(){
         String Height=etHeight.getText().toString();
 
@@ -125,7 +80,7 @@ public class ClientDetail extends AppCompatActivity {
 
         boolean isOk=true;
         if(Height.length()==0){
-            etHeight.setError("Enter you Length");
+            etHeight.setError("Enter you height");
             isOk=false;
         }
 
@@ -158,7 +113,7 @@ public class ClientDetail extends AppCompatActivity {
             }
 
             if (L > 220 || L < 130) {
-                etHeight.setError("Enter a Valid Length");
+                etHeight.setError("Enter a Valid height");
                 isOk = false;
             }
             if (L == 0) {
@@ -222,6 +177,8 @@ public class ClientDetail extends AppCompatActivity {
         String Height=etHeight.getText().toString();
         String Age= etAge.getText().toString();
         String Weight=etWeight.getText().toString();
+
+        boolean isMale=radioButtonMale.isChecked();
 
         boolean isOk=true;
         if(Height.length()==0){
@@ -290,6 +247,8 @@ public class ClientDetail extends AppCompatActivity {
                 p.setLength(L);
                 p.setAge(A);
                 p.setActive(Act);
+                p.setGender(isMale);
+
                 //استخراج الرقم المميز لل Uid
                 String owner = FirebaseAuth.getInstance().getCurrentUser().getUid();
                 p.setOwner(owner);
@@ -302,6 +261,7 @@ public class ClientDetail extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
+                            //نقل القيمة " كمية الكالوري التي يجب ان ياكلها المستخدم حسب وزنه وطوله وعمره واذا كان رجل ام امراة" ويعرضها ف
                             Intent i = new Intent(ClientDetail.this, MainActivity.class);
                             i.putExtra("typ2",p.BulkingCalories());
                             startActivity(i);

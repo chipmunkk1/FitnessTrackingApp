@@ -9,8 +9,11 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -23,6 +26,7 @@ import com.google.firebase.database.ValueEventListener;
  */
 public class MainActivity extends AppCompatActivity {
     private TextView Calories;
+    private FloatingActionButton returnToClient;
 
 
     @Override
@@ -30,19 +34,38 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         Calories=findViewById(R.id.Calories);
+        returnToClient=findViewById(R.id.returnToClient);
+
+        returnToClient.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent i = new Intent(MainActivity.this, ClientDetail.class);
+                startActivity(i);
+            }
+        });
+
+
+
+
+
     }
+
+
 
     @Override
     protected void onResume() {
         super.onResume();
         if(getIntent()!=null&&getIntent().hasExtra("typ1"))
         {
-            Double type1 =(double) getIntent().getExtras().get("type1");
+            Double type1 =(double) getIntent().getExtras().get("typ1");
             Calories.setText(type1+"");
         }
         else{
-            Double type2 =(double) getIntent().getExtras().get("type2");
-            Calories.setText(type2+"");
+            if(getIntent()!=null&&getIntent().hasExtra("typ2")) {
+                Double type2 = (double) getIntent().getExtras().get("typ2");
+
+                Calories.setText(type2 + "");
+            }
         }
     }
 
