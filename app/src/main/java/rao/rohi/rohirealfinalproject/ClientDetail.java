@@ -182,7 +182,7 @@ public class ClientDetail extends AppCompatActivity {
 
         boolean isOk=true;
         if(Height.length()==0){
-            etHeight.setError("Enter you Length");
+            etHeight.setError("Enter you Height");
             isOk=false;
         }
 
@@ -261,7 +261,7 @@ public class ClientDetail extends AppCompatActivity {
                     @Override
                     public void onComplete(@NonNull Task<Void> task) {
                         if (task.isSuccessful()) {
-                            //نقل القيمة " كمية الكالوري التي يجب ان ياكلها المستخدم حسب وزنه وطوله وعمره واذا كان رجل ام امراة" ويعرضها ف
+                            //نقل القيمة " كمية الكالوري التي يجب ان ياكلها المستخدم حسب وزنه وطوله وعمره واذا كان رجل ام امراة" ويعرضها بالصفحة التي بعدها
                             Intent i = new Intent(ClientDetail.this, MainActivity.class);
                             i.putExtra("typ2",p.BulkingCalories());
                             startActivity(i);

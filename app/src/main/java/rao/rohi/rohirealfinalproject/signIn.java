@@ -22,16 +22,17 @@ import com.google.firebase.auth.FirebaseAuth;
  */
 
 public class signIn extends AppCompatActivity {
-    private TextInputEditText etEmail;
-    private TextInputEditText etPass;
-    private Button btnSignUp;
-    private Button btnSignIn;
+    private TextInputEditText etEmail;  //email
+    private TextInputEditText etPass;  //password
+    private Button btnSignUp;           //signIn Button
+    private Button btnSignIn;           //signUp Button
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_sign_in);
 
+        //check if this email is already signed in before (valid email)
         if(FirebaseAuth.getInstance().getCurrentUser()!=null){
             Intent i = new Intent(signIn.this,MainActivity.class);
             startActivity(i);
@@ -93,12 +94,12 @@ public class signIn extends AppCompatActivity {
                     public void onComplete(@NonNull Task<AuthResult> task) {
                         //if all is true then go to client activity
                         if (task.isSuccessful()) {
-                            Toast.makeText(signIn.this, "Successful", Toast.LENGTH_SHORT).show();
-                            Intent i = new Intent(signIn.this, ClientDetail.class);
-                            startActivity(i);
-                            finish();
+                                Toast.makeText(signIn.this, "Successful", Toast.LENGTH_SHORT).show();
+                                Intent i = new Intent(signIn.this, MainActivity.class);
+                                startActivity(i);
+                                finish();
                         }
-                        //else show (toast) wtrong email or password and dont allow to join
+                        //else show (toast) wrong email or password and dont allow to join
                         else {
                             Toast.makeText(signIn.this, "Wrong password or Email", Toast.LENGTH_SHORT).show();
                         }

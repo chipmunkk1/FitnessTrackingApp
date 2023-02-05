@@ -38,7 +38,7 @@ public class ShowProfile extends AppCompatActivity {
         AgeProfile=findViewById(R.id.AgeProfile);
         ActiveBar=findViewById(R.id.ActiveBar);
 
-        //تشغيل مراقب لاي تغيير على قلاعدة البيانات ويقوم بتنظيف المعطيات الموجه وتنزيل معلومات جديدة
+        //تشغيل مراقب لاي تغيير على قاعدة البيانات ويقوم بتنظيف المعطيات الموجه وتنزيل معلومات جديدة
         readTaskFromFirebase();
         btnOk.setOnClickListener(new View.OnClickListener() {
             @Override
