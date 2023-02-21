@@ -93,7 +93,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         DatabaseReference reference= FirebaseDatabase.getInstance().getReference();
         String Owner= FirebaseAuth.getInstance().getCurrentUser().getUid();
 
-        reference.child("Steps and Calorie").child(Owner).addValueEventListener(new ValueEventListener() {
+        FirebaseDatabase.getInstance().getReference().child("Steps and Calorie").child(Owner).addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot snapshot) {
                 snapshot.getChildren();
@@ -102,8 +102,8 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
                     StepsProfile stepsProfile =d.getValue(StepsProfile.class);
                     TvStepCounter.setText(stepsProfile.getSteps()+"");
                     TvDistanceNumber.setText(stepsProfile.getDistance()+"");
-                    TvCalorieBurnNumber.setText(stepsProfile.getCalorieBurn());
-                    Calories.setText(stepsProfile.getCalorieEat());
+                    TvCalorieBurnNumber.setText(stepsProfile.getCalorieBurn()+"");
+                    Calories.setText((stepsProfile.getCalorieEat()-stepsProfile.getCalorieBurn())+"");
 
 
                 }
@@ -221,14 +221,15 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
          *         so when an used account join and has steps ... it will show them
          */
 
+
         int StepsCounter=Integer.parseInt(String.valueOf(TvStepCounter.getText().toString()));
         double DistanceNumber=Double.parseDouble(String.valueOf(TvDistanceNumber.getText().toString()));
         int CalorieBurnNumber=Integer.parseInt(String.valueOf(TvCalorieBurnNumber.getText().toString()));
         int CalorieEat=Integer.parseInt(String.valueOf(Calories.getText().toString()));
 
 
-
         StepsProfile stepsProfile= new StepsProfile();
+
 
         stepsProfile.setSteps(StepsCounter);
         stepsProfile.setCalorieBurn(CalorieBurnNumber);
@@ -241,7 +242,7 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
 //        String key = FirebaseDatabase.getInstance().getReference().child("Steps and Calorie").child(owner).push().getKey();
 //        stepsProfile.setKey(key);
 
-        FirebaseDatabase.getInstance().getReference().child("Steps and Calorie").child(owner).setValue(stepsProfile).addOnCompleteListener(new OnCompleteListener<Void>() {
+        FirebaseDatabase.getInstance().getReference().child("Steps and Calorie").child(owner).child("iam").setValue(stepsProfile).addOnCompleteListener(new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {
                 if(task.isSuccessful()==false)

@@ -105,6 +105,7 @@ public class SignUp extends AppCompatActivity {
                         if the email and password are valid then the email and the pass are saved in the firebase
                         and a text will pop up in the bottom of the screen says "password and email are saved"
                          */
+                        startActivity(new Intent(SignUp.this,ClientDetail.class));
                         Toast.makeText(SignUp.this, "password and email are saved", Toast.LENGTH_SHORT).show();
                         finish(); // when  i press the button save the current screen will close and returns to the previous screen
 
