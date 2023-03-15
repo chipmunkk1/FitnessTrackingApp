@@ -8,12 +8,15 @@
     android:background="@drawable/background"
     android:orientation="vertical"
     tools:context=".MainActivity">
+    
 
 
     <LinearLayout
         android:layout_width="match_parent"
         android:layout_height="579dp"
         android:orientation="vertical">
+
+
 
         <TextView
             android:id="@+id/TvStepCounter"
@@ -53,9 +56,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:textSize="20dp"
             android:text="Distance (km)"
             android:textColor="@color/black"
+            android:textSize="20dp"
             android:textStyle="bold" />
 
         <TextView
@@ -75,8 +78,8 @@
             android:layout_gravity="end"
             android:layout_marginRight="15dp"
             android:text="Calories burn"
-            android:textSize="20dp"
             android:textColor="@color/black"
+            android:textSize="20dp"
             android:textStyle="bold" />
 
         <LinearLayout
@@ -105,11 +108,73 @@
                 android:maxLength="4"
                 android:text="0"
                 android:textColor="@color/black"
-                android:textSize="50dp" />
+                android:textSize="50dp"/>
 
         </LinearLayout>
+        <Button
+            android:id="@+id/GetLocationButton"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Get location"
+            android:backgroundTint="@color/teal_200"
+            android:layout_marginLeft="135dp"/>
+
+        <TextView
+            android:id="@+id/AdressTv"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="20dp"
+            android:text="Address :"
+            android:textColor="@color/black"
+            android:textSize="30dp"
+            android:textStyle="bold" />
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="City :"
+            android:id="@+id/CityTv"
+            android:textSize="30dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="10dp"/>
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:text="Country :"
+            android:id="@+id/CountryTv"
+            android:textSize="30dp"
+            android:textColor="@color/black"
+            android:textStyle="bold"
+            android:layout_marginTop="20dp"
+            android:layout_marginStart="10dp"/>
+
 
     </LinearLayout>
+
+    <TextView
+        android:id="@+id/LatitudeTv"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:text="Latitude :"
+        android:textColor="@color/black"
+        android:textSize="30dp"
+        android:textStyle="bold" />
+
+    <TextView
+        android:id="@+id/LongitudeTv"
+        android:layout_width="match_parent"
+        android:layout_height="98dp"
+        android:layout_marginStart="10dp"
+        android:layout_marginTop="20dp"
+        android:text="Longitude :"
+        android:textColor="@color/black"
+        android:textSize="30dp"
+        android:textStyle="bold" />
 
 
 </LinearLayout>

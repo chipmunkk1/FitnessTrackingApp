@@ -35,20 +35,9 @@ public class splashscreen extends AppCompatActivity {
                     startActivity(i);                   //to start the i witch is going from splash activity to signIn
                     finish();           //to close the current activity
                 }
-
-
-
             }
         };
         h.postDelayed(r,3000);
-
-
-
-
-
-
-
-
 
     };
 

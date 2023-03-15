@@ -44,7 +44,7 @@ public class signIn extends AppCompatActivity {
         btnSignUp = findViewById(R.id.btnSignUp);
         btnSignIn = findViewById(R.id.btnSignIn);
 
-
+        //this button leads you to sign up page
         btnSignUp.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -53,7 +53,7 @@ public class signIn extends AppCompatActivity {
             }
         });
 
-
+        //this button checks all the
         btnSignIn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

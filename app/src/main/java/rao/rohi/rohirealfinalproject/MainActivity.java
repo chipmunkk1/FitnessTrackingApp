@@ -3,6 +3,7 @@ package rao.rohi.rohirealfinalproject;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
 import android.Manifest;
@@ -14,16 +15,25 @@ import android.hardware.Sensor;
 import android.hardware.SensorEvent;
 import android.hardware.SensorEventListener;
 import android.hardware.SensorManager;
+import android.location.Address;
+import android.location.Geocoder;
+import android.location.Location;
 import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.WindowManager;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.android.gms.location.FusedLocationProviderClient;
+import com.google.android.gms.location.LocationServices;
+import com.google.android.gms.maps.GoogleMap;
+import com.google.android.gms.maps.SupportMapFragment;
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.OnSuccessListener;
 import com.google.android.gms.tasks.Task;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import com.google.firebase.auth.FirebaseAuth;
@@ -32,6 +42,10 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
+
+import java.io.IOException;
+import java.util.List;
+import java.util.Locale;
 
 import rao.rohi.rohirealfinalproject.data.StepsProfile;
 import rao.rohi.rohirealfinalproject.data.profile;
@@ -47,6 +61,11 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     private boolean isCounterSensorPresent;
     private int StepCount=0;
 
+    FusedLocationProviderClient fusedLocationProviderClient;
+    TextView AdressTv,CityTv,CountryTv,LatitudeTv,LongitudeTv;
+    Button GetLocationButton;
+    private final static int REQUEST_CODE=100;
+
 
 
     @SuppressLint("ServiceCast")
@@ -54,6 +73,23 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+        AdressTv=findViewById(R.id.AdressTv);
+        CityTv=findViewById(R.id.CityTv);
+        CountryTv=findViewById(R.id.CountryTv);
+        LatitudeTv=findViewById(R.id.LatitudeTv);
+        LongitudeTv=findViewById(R.id.LongitudeTv);
+        GetLocationButton=findViewById(R.id.GetLocationButton);
+
+        fusedLocationProviderClient= LocationServices.getFusedLocationProviderClient(this);
+
+        GetLocationButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getLastLocation();
+            }
+        });
+
+
         if(ContextCompat.checkSelfPermission(this,
                 Manifest.permission.ACTIVITY_RECOGNITION) == PackageManager.PERMISSION_DENIED){ //ask for permission
             requestPermissions(new String[]{Manifest.permission.ACTIVITY_RECOGNITION}, 0);
@@ -84,6 +120,57 @@ public class MainActivity extends AppCompatActivity implements SensorEventListen
         }
 
     }
+
+    private void getLastLocation() {
+        if(ContextCompat.checkSelfPermission(this,Manifest.permission.ACCESS_FINE_LOCATION)==PackageManager.PERMISSION_GRANTED);
+
+        fusedLocationProviderClient.getLastLocation()
+                .addOnSuccessListener(new OnSuccessListener<Location>() {
+            @Override
+            public void onSuccess(Location location) {
+                if(location!=null){
+                    Geocoder geocoder=new Geocoder(MainActivity.this, Locale.getDefault());
+                    List<Address> addresses= null;
+                    try {
+                        addresses = geocoder.getFromLocation(location.getLatitude(),location.getLongitude(),1);
+                        LatitudeTv.setText("Latitude :"+addresses.get(0).getLatitude());
+                        LongitudeTv.setText("Longitude :"+addresses.get(0).getLongitude());
+                        AdressTv.setText("Adress :"+addresses.get(0).getAddressLine(0));
+                        CityTv.setText("City :"+addresses.get(0).getLocality());
+                        CountryTv.setText("Countrey :"+addresses.get(0).getCountryName());
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+
+                }
+            }
+        });
+    askPermession();
+    }
+
+    private void askPermession() {
+        ActivityCompat.requestPermissions(MainActivity.this, new String[]{Manifest.permission.ACCESS_FINE_LOCATION},REQUEST_CODE);
+    }
+
+    @Override
+    public void onRequestPermissionsResult(int requestCode, @NonNull String[] permissions, @NonNull int[] grantResults) {
+        if(requestCode==REQUEST_CODE) {
+            if (grantResults.length > 0 && grantResults[0]==PackageManager.PERMISSION_GRANTED){
+                getLastLocation();
+            }
+            else{
+                Toast.makeText(this, "Required permission", Toast.LENGTH_SHORT).show();
+            }
+
+        }
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults);
+    }
+
+    // Get a reference to the map fragment
+    SupportMapFragment mapFragment = (SupportMapFragment) getSupportFragmentManager()
+            .findFragmentById(R.id.map);
+
+
 
     /**
      * to check if there is a details in firebase to this account and shows them if so
