@@ -9,7 +9,8 @@ Built with Android Studio using Java, this app is suitable for everyone from kid
 ### 🔐 User Authentication
 - Secure email + password login system.
 - New users can create an account, which is safely stored in a local database.
-<img width="400" height="871" alt="Login" src="https://github.com/user-attachments/assets/73638510-d3af-44e1-a645-fc00ed3dfbd1" />
+<img width="200" height="600" alt="Login" src="https://github.com/user-attachments/assets/73638510-d3af-44e1-a645-fc00ed3dfbd1" />
+
 
 
 
@@ -23,6 +24,7 @@ Users can input:
 - Daily activity level  
 - Goal: **Bulk** or **Cut**
   <img width="200" height="600" alt="Details" src="https://github.com/user-attachments/assets/89e3feeb-5733-4808-801e-1074960273df" />
+
 
 
 The app uses these details to calculate the **recommended daily calorie intake** tailored to the user's fitness goal.
@@ -49,7 +51,9 @@ When the user taps "Get Location":
 - Retrieves the **exact address**
 - Shows the **city name**
 Powered by Google’s Location Services.
-<img width="704" height="1472" alt="MainActivity" src="https://github.com/user-attachments/assets/d790f335-3c37-4167-aa67-ee1a3501785e" />
+<img width="200" height="600" alt="MainActivity" src="https://github.com/user-attachments/assets/d790f335-3c37-4167-aa67-ee1a3501785e" />
+
+
 
 
 ---
