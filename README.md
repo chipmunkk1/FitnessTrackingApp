@@ -6,10 +6,14 @@ Built with Android Studio using Java, this app is suitable for everyone from kid
 ---
 
 ## 📱 Features
-
 ### 🔐 User Authentication
 - Secure email + password login system.
 - New users can create an account, which is safely stored in a local database.
+<img width="400" height="871" alt="Login" src="https://github.com/user-attachments/assets/73638510-d3af-44e1-a645-fc00ed3dfbd1" />
+
+
+
+
 
 ### 🧍 Personalized Profile Setup
 Users can input:
