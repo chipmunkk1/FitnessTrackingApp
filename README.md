@@ -22,6 +22,8 @@ Users can input:
 - Age  
 - Daily activity level  
 - Goal: **Bulk** or **Cut**
+  <img width="402" height="867" alt="Details" src="https://github.com/user-attachments/assets/89e3feeb-5733-4808-801e-1074960273df" />
+
 
 The app uses these details to calculate the **recommended daily calorie intake** tailored to the user's fitness goal.
 
@@ -46,8 +48,9 @@ When the user taps "Get Location":
 - Displays **latitude** and **longitude**
 - Retrieves the **exact address**
 - Shows the **city name**
-
 Powered by Google’s Location Services.
+<img width="704" height="1472" alt="MainActivity" src="https://github.com/user-attachments/assets/d790f335-3c37-4167-aa67-ee1a3501785e" />
+
 
 ---
 
