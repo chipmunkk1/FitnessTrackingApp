@@ -23,6 +23,7 @@ Users can input:
 - Age  
 - Daily activity level  
 - Goal: **Bulk** or **Cut**
+  
   <img width="200" height="600" alt="Details" src="https://github.com/user-attachments/assets/89e3feeb-5733-4808-801e-1074960273df" />
 
 
